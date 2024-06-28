@@ -1,57 +1,128 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Major Cities</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
 
-    <!-- Including the main.css file for styling -->
-    <link rel="stylesheet" href="main.css">
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+</style>
+<link rel="stylesheet" href="main.css">
 </head>
-
 <body>
-    <div class="topnav" id="myTopnav">
+
+<div class="topnav" id="myTopnav">
     <a href="index.html">Home Page</a>
     <a class="active" href="major_cities.html">Major Cities</a>
     <a href="my_experience.html">My Experience</a>
     <a href="pictures.html">Pictures</a>
     <a href="learn_more.html">Learn More</a>
+
+    <a href="javascript:void(0);" class="icon">
+        <i class="fa fa-bars"></i>
+    </a>
     </div>
 
-    <!-- Page content -->
-    <div class="content">
-    <b>Major Cities</b>
-        <br>
-        <br>
-    <b>Yaoundé</b> 
-        <br>
+<h2>Major Cities</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Yaoundé')" id="defaultOpen">Yaoundé</button>
+  <button class="tablinks" onclick="openCity(event, 'Douala')">Douala</button>
+</div>
+
+<div id="Yaoundé" class="tabcontent">
+  <h3>Yaoundé</h3>
+  <p><br>
         The capital city of Cameroon is <i>Yaoundé</i>,
-        which is located in the central part of the country, <br>
+        which is located in the central part of the country,
         up in the mountains. Yaoundé is known as the <i>city of seven hills</i> 
-        because of its topography, though a more accurate number might be <br>
+        because of its topography, though a more accurate number might be
         in the hundreds, a fact that leads to marvelous tropical vistas 
         around every corner of the city.
         <br>
+        <br>
         <img src="https://mediaim.expedia.com/destination/1/10b9b6c68c38378997e5be2b72b6f090.jpg"
-             style="width: 50%; height: 50%;">
+             style="width: 100%; height: auto;">
         <br>
-        <br>
-    <b>Douala</b>
-        <br>
+        <br></p>
+</div>
+
+<div id="Douala" class="tabcontent">
+  <h3>Douala</h3>
+  <br>
         Cameroon's largest city is <i>Douala</i>, 
-        located on the delta of the Wouri River as it flows out to the Atlantic. <br>
+        located on the delta of the Wouri River as it flows out to the Atlantic.
         It is a lot more humid than its mountainous counterpart, making the city 
-        feel much hotter in the dry season, which runs from November to May. <br>
+        feel much hotter in the dry season, which runs from November to May.
         Many travel sites describe the city as <i>icky and sticky</i> for this reason. 
-        Though the city is very flat, on a perfectly clear day, <br>
+        Though the city is very flat, on a perfectly clear day,
         Mount Cameroon can be spotted in the distance.
         <br>
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Douala-Vue_a%C3%A9rienne_%2824%29.jpg"
-             style="width: 50%; height: 50%;">
+             style="width: 100%; height: auto;">
     </div>
-    
-    <!-- Including the main.js file for JavaScript functionality -->
-    <script src="js/main.js"></script>
 
-</body>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 
-</html>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+    </script>
+   
+  </body>
+</html> 
